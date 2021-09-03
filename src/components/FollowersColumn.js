@@ -1,3 +1,5 @@
+import MicroCard from '../components/MicroCard'
+
 const FollowersColumn = (topFiveFollowing) => {
   const users = topFiveFollowing.users
 
