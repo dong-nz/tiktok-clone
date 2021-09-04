@@ -1,10 +1,9 @@
-const fs = import('fs')
 const { createClient } = require("@astrajs/collections")
 
 const collection = 'posts'
 
 exports.handler = async function (event, context, callback) {
-    const fs = require('fs')
+     const fs = require('fs')
     const astraClient = await createClient({
         astraDatabaseId: process.env.ASTRA_DB_ID,
         astraDatabaseRegion: process.env.ASTRA_DB_REGION,
@@ -15,7 +14,9 @@ exports.handler = async function (event, context, callback) {
         .namespace(process.env.ASTRA_DB_KEYSPACE)
         .collection(collection)
 
-    const data = JSON.parse(fs.readFileSync('/config/workspace/resources/data.json'))
+    const path  = require('path');
+
+    const data = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'data.json')))
 
     try {
         for (let i = 0; i < data.length; i++) {
